@@ -1,0 +1,215 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Fitness Guide API",
+      "description": "This API helps you pick right set of excercies to ensure desired consumption of calories",
+      "license": {
+        "name": "FOSS"
+      }
+    },
+    "servers": [
+      {
+         "url": "http://localhost:8000/api/"
+      }
+   ],
+   "host": "localhost:8000/api/",
+   "basePath": "/api2",
+    "tags": [
+      {
+        "name": "Excercies Plan",
+        "description": "API for users in the system to pick right excercise."
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+
+        "paths": {
+            "/getAll": {
+              "get": {
+                "tags": ["API endpoints"],
+                "summary": "Get all excercies in the database.",
+                "responses": {
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+            },
+            "/createExcerciese": {
+              "post": {
+   
+                "tags": ["Insert New Excercise Database"],
+                "summary": "Create new excercies in database.",
+                "description": "Create new excercies in database.",
+                "produces": ["application/json"],
+                "responses": {
+                  "201": {
+                    "description": "New excercise has been created",
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "requestBody": {
+                  "required": "true",
+                  "content": {
+                    "application/json":{
+                      "schema":{
+                        "type": "object",
+                        "properties":{
+                          "excercise_name":{
+                            "type":"string",
+                            "default": "swimming"
+                          },
+                          "calories_burn":{
+                            "type":"integer",
+                            "default": "130"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "/getByID/{id}": {
+
+              "parameters":[{
+                "name": "id",
+                "in": "path",
+                "type":"integer",
+                "description": "Excercise ID",
+                "required": true,
+                "default": "3",
+                "schema": {
+                   "type": "integer"
+                }
+             }
+
+              ],
+              "get": {
+                "tags": ["API endpoints"],
+                "summary": "Give a specified excercise plan by excercise ID.",
+                "description": ">This resource represents an individual user in the system.Each excercise is identified by a numeric `id`.",
+
+                "produces": ["application/json"],
+                "responses": {
+                  "201": {
+                    "description": "New excercise is created",
+                    "content": {
+                      "application/json":{
+                        "schema":{
+                          "type": "object",
+                          "properties":{
+                            "excercise_name":{
+                              "type":"string",
+                              "default": "swimming"
+                            },
+                            "calories_burn":{
+                              "type":"integer",
+                              "default": "130"
+                            }
+                          }
+                        }
+                      }
+                    }
+                    
+                  }      
+                }
+              }
+            },
+            "/updatePlanByID/{id}": {
+              "parameters":[{
+                "name": "id",
+                "in": "path",
+                "type":"integer",
+                "description": "Excercise ID",
+                "required": true,
+                "default": "2",
+                "schema": {
+                   "type": "integer"
+                }
+             }
+
+              ],
+              "put": {
+                "tags": ["API endpoints"],
+                "summary": "Update a specified excercise plan by excercise ID.",
+                "description": ">This resource represents an individual user in the system.Each excercise is identified by a numeric `id`.",
+
+                "produces": ["application/json"],
+                "responses": {
+                  "201": {
+                    "description": "New excercise is created",
+                    "content": {
+                      "application/json":{
+                        "schema":{
+                          "type": "object",
+                          "properties":{
+                            "excercise_name":{
+                              "type":"string",
+                              "default": "Running"
+                            },
+                            "calories_burn":{
+                              "type":"integer",
+                              "default": "130"
+                            }
+                          }
+                        }
+                      }
+                    }
+                    
+                  }      
+                }
+              }
+            },
+            "/deletePlanByID/{id}": {
+              "parameters":[{
+                "name": "id",
+                "in": "path",
+                "type":"integer",
+                "description": "Excercise ID",
+                "required": true,
+                "default": "2",
+                "schema": {
+                   "type": "integer"
+                }
+             }
+
+              ],
+              "delete": {
+                "tags": ["API endpoints"],
+                "summary": "Delete a specified excercise plan by excercise ID.",
+                "description": ">This resource represents an individual user in the system.Each excercise is identified by a numeric `id`.",
+
+                "produces": ["application/json"],
+                "responses": {
+                  "201": {
+                    "description": "New excercise is created",
+                    "content": {
+                      "application/json":{
+                        "schema":{
+                          "type": "object",
+                          "properties":{
+                            "excercise_name":{
+                              "type":"string",
+                              "default": "Running"
+                            },
+                            "calories_burn":{
+                              "type":"integer",
+                              "default": "130"
+                            }
+                          }
+                        }
+                      }
+                    }
+                    
+                  }      
+                }
+              }
+            }
+          }
+      }
+  
